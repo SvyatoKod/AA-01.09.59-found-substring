@@ -1,6 +1,6 @@
-package org.submarine.converter.primenumber;
+package org.submarine.converter.uniqnumber.primenumber;
 
-import org.submarine.converter.IConverterUniqNumber;
+import org.submarine.converter.uniqnumber.IConverterUniqNumber;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +8,8 @@ import java.util.Map;
 /**
  * Конвертер, превращающий строку/массив_символов в уникальное число, учитывающее перестановку символов.
  *
- * Идея реализации: перемножение простых чисел - есть уникальное число, которое не зависит от местоположения символов в строке.
+ * Идея реализации:
+ * Перемножение простых чисел - отображение в уникальное число, которое не зависит от местоположения символов в строке.
  * 'abc' -> 2*3*5=30
  * 'cba' -> 5*3*2=30
  * 'bca' -> 3*5*2=30
@@ -75,7 +76,7 @@ public class ConverterPrimeNumbers implements IConverterUniqNumber {
     }};
 
     @Override
-    public Long convertStringToUniqNumber(String inputString) {
+    public Long convertCharArrayToUniqNumber(String inputString) {
         char[] charArray = inputString.toCharArray();
 
         long multipllly = 1L;
@@ -86,7 +87,7 @@ public class ConverterPrimeNumbers implements IConverterUniqNumber {
     }
 
     @Override
-    public Long convertStringToUniqNumber(char[] inputCharArray, int startIndex, int endIndex) {
+    public Long convertCharArrayToUniqNumber(char[] inputCharArray, int startIndex, int endIndex) {
         long multipllly = 1L;
         for (int i = startIndex; i < endIndex; i++) {
             multipllly *= alphabetPrimesMap.get(inputCharArray[i]);
